@@ -1,0 +1,23 @@
+{
+  "name": "farlo-assesment",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "private": true,
+  "npmClient": "yarn",
+  "author": "Pritom Chowdhury Dip",
+  "workspaces": [
+    "frontend",
+    "server"
+  ],
+  "scripts": {
+    "client": "yarn workspace frontend start",
+    "server": "yarn workspace server start",
+    "start": "concurrently \"yarn workspace server start\" \"yarn workspace frontend dev\""
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  },
+  "keywords": [],
+  "license": "ISC"
+}
