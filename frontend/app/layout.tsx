@@ -1,10 +1,13 @@
-'use client'
-
 import { Inter } from 'next/font/google'
 import './globals.css'
 import Providers from '@/providers/Provider'
+import type { Metadata } from 'next'
 
 const inter = Inter({ subsets: ['latin'] })
+
+export const metadata: Metadata = {
+  title: 'JS Dev test assesment'
+}
 
 export default function RootLayout({
   children

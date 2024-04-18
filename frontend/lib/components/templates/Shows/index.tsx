@@ -1,8 +1,13 @@
 import React from 'react'
 import Show from '../Show'
 import { Wrapper } from './Shows.style'
+import { IShow } from '@/types/show'
 
-const Shows = ({ shows }: any) => {
+interface IProps {
+  shows: IShow[]
+}
+
+const Shows = ({ shows }: IProps) => {
   return (
     <>
       <Wrapper>

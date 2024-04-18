@@ -1,6 +1,8 @@
 'use client'
 
 import Shows from '@/components/templates/Shows'
+import { IShow } from '@/types/show'
+import { useQuery } from '@tanstack/react-query'
 import styled from 'styled-components'
 
 const Wrapper = styled.div`
@@ -12,35 +14,23 @@ const Wrapper = styled.div`
 `
 const Title = styled.h2``
 
-const data = [
-  {
-    title: 'Come From Away',
-    image:
-      'http://res.cloudinary.com/solt/image/upload/v1645790496/Wicked_SOLT_1200x600_b13bfm.jpg',
-    link: '/book-come-from-away'
-  },
-  {
-    title: 'Mamma Mia!',
-    image:
-      'http://res.cloudinary.com/solt/image/upload/v1645790496/Wicked_SOLT_1200x600_b13bfm.jpg',
-    link: '/book-mamma-mia'
-  },
-  {
-    title: 'The Phantom Of The Opera',
-    image:
-      'http://res.cloudinary.com/solt/image/upload/v1645790496/Wicked_SOLT_1200x600_b13bfm.jpg',
-    link: '/book-phantom-opera',
-    soldOut: true
-  },
-  {
-    title: 'The Woman In Black',
-    image:
-      'http://res.cloudinary.com/solt/image/upload/v1645790496/Wicked_SOLT_1200x600_b13bfm.jpg',
-    link: '/book-woman-in-black'
+const getAllShows = async () => {
+  const response = await fetch('http://localhost:4000/api/v1/shows')
+  if (!response.ok) {
+    throw new Error('Network response was not ok')
   }
-]
+  return response.json()
+}
 
 export default function Home() {
+  const { isLoading, error, data } = useQuery({
+    queryKey: ['shows'],
+    queryFn: getAllShows
+  })
+
+  if (isLoading) return <h3>Loading......</h3>
+  if (error) return <h2>Something went wrong.</h2>
+
   return (
     <Wrapper>
       <Title>Today&apos;s Deal</Title>

@@ -7,6 +7,7 @@ export const ShowCard = styled.div<{ soldOut: boolean }>`
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  cursor: ${props => (props.soldOut ? 'default' : 'pointer')};
 `
 
 export const ShowContent = styled.div`
