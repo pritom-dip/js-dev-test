@@ -1,9 +1,9 @@
 'use client'
 
 import Shows from '@/components/templates/Shows'
-import { useQuery } from '@tanstack/react-query'
 import styled from 'styled-components'
 import Loader from '@/components/shared/Loader'
+import { useShows } from '@/queries/shows'
 
 const Wrapper = styled.div`
   display: flex;
@@ -14,19 +14,8 @@ const Wrapper = styled.div`
 `
 const Title = styled.h2``
 
-const getAllShows = async () => {
-  const response = await fetch('http://localhost:4000/api/v1/shows')
-  if (!response.ok) {
-    throw new Error('Network response was not ok')
-  }
-  return response.json()
-}
-
 export default function Home() {
-  const { isLoading, error, data } = useQuery({
-    queryKey: ['shows'],
-    queryFn: getAllShows
-  })
+  const { isLoading, error, data } = useShows()
 
   if (isLoading) return <Loader />
   if (error) return <h2>Something went wrong.</h2>
