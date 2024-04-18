@@ -4,9 +4,9 @@ const path = require('path')
 
 const getAllShows = (req, res) => {
   try {
-    const filePath = path.join(__dirname, 'public', config.fileName)
+    const filePath = path.join(__dirname, '..', 'public', config.fileName)
 
-    if (!filePath.startsWith(path.join(__dirname, 'public'))) {
+    if (!filePath.startsWith(path.join(__dirname, '..', 'public'))) {
       return res.status(400).json({ error: 'Invalid file request' })
     }
 

@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon server.js"
+    "start": "concurrently \"yarn nodemon server.js\" \"yarn nodemon scrapper.js\""
   },
   "keywords": [],
   "author": "",
