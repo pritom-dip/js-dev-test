@@ -1,9 +1,9 @@
 'use client'
 
 import Shows from '@/components/templates/Shows'
-import { IShow } from '@/types/show'
 import { useQuery } from '@tanstack/react-query'
 import styled from 'styled-components'
+import Loader from '@/components/shared/Loader'
 
 const Wrapper = styled.div`
   display: flex;
@@ -28,7 +28,7 @@ export default function Home() {
     queryFn: getAllShows
   })
 
-  if (isLoading) return <h3>Loading......</h3>
+  if (isLoading) return <Loader />
   if (error) return <h2>Something went wrong.</h2>
 
   return (
